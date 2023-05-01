@@ -1,11 +1,11 @@
-import React from 'react';
-import { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import { FiSun, FiMoon, FiUser } from 'react-icons/fi';
 import {Link} from "react-router-dom";
+import {ThemeContext} from "../provider/ThemeProvider.jsx";
 
 function Header() {
-    const [darkMode, setDarkMode] = useState(false);
-    const [loggedIn, setLoggedIn] = useState(true);
+    const { darkMode, toggleDarkMode } = useContext(ThemeContext);
+    const [loggedIn, setLoggedIn] = useState(false);
 
     function handleLogin() {
         setLoggedIn(true);
@@ -38,14 +38,14 @@ function Header() {
                             </div>
                         ) : (
                             <div className="flex items-center space-x-2">
-                                <button className="px-4 py-2 rounded-md bg-yellow-500 text-white font-medium" onClick={handleLogin}>Login</button>
-                                <button className="px-4 py-2 rounded-md bg-yellow-500 text-white font-medium">Register</button>
+                                <Link to={'/login'} className="px-4 py-2 rounded-md bg-yellow-500 text-white font-medium" onClick={handleLogin}>Login</Link>
+                                <Link to={'/registration'} className="px-4 py-2 rounded-md bg-yellow-500 text-white font-medium">Register</Link>
                             </div>
                         )}
                         <div className="flex items-center">
                             <button
                                 className={`${darkMode ? 'bg-yellow-500' : 'bg-gray-200'} flex items-center justify-center rounded-md w-10 h-10`}
-                                onClick={() => setDarkMode(!darkMode)}
+                                onClick={() => toggleDarkMode(!darkMode)}
                             >
                                 {darkMode ? <FiMoon size={20} color="#FFF" /> : <FiSun size={20} color="#000" />}
                             </button>

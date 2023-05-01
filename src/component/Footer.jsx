@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
+import {ThemeContext} from "../provider/ThemeProvider.jsx";
 
 const Footer = () => {
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const { darkMode } = useContext(ThemeContext);
     const [email, setEmail] = useState('');
 
-    function toggleDarkMode() {
-        setIsDarkMode(!isDarkMode);
-    }
+
 
     function handleEmailChange(event) {
         setEmail(event.target.value);
@@ -18,10 +17,10 @@ const Footer = () => {
         setEmail('');
     }
 
-    const textColor = isDarkMode ? 'text-white' : 'text-gray-800';
-    const bgColor = isDarkMode ? 'bg-gray-800' : 'bg-white';
-    const borderColor = isDarkMode ? 'border-white' : 'border-gray-300';
-    const logoSrc = isDarkMode ? '/logo-dark.png' : '/logo-light.png';
+    const textColor = darkMode ? 'text-white' : 'text-gray-800';
+    const bgColor = darkMode ? 'bg-gray-800' : 'bg-white';
+    const borderColor = darkMode ? 'border-white' : 'border-gray-300';
+    const logoSrc = darkMode ? '/logo-dark.png' : '/logo-light.png';
 
     return (
         <>
