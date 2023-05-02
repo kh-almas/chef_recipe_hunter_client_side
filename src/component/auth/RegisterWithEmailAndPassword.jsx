@@ -24,6 +24,7 @@ const RegisterWithEmailAndPassword = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [confirmPasswordError , setConfirmPasswordError] = useState('');
 
+
     function handleNameChange(event) {
         const nameValue = event.target.value;
         setNameError('');
@@ -44,7 +45,6 @@ const RegisterWithEmailAndPassword = () => {
             {
                 setNameError("Don't use special characters in name");
             }
-            console.log(nameValue);
         }
     }
 
@@ -126,6 +126,31 @@ const RegisterWithEmailAndPassword = () => {
 
     function handleSubmit(event) {
         event.preventDefault();
+
+        if (name === ''){
+            setNameError('Input required');
+            return;
+        }
+
+        if (email === ''){
+            setEmailError('Input required');
+            return;
+        }
+
+        if (photoUrl === ''){
+            setPhotoUrlError('Input required');
+            return;
+        }
+
+        if (password === ''){
+            setPasswordError('Input required');
+            return;
+        }
+
+        if (confirmPassword === ''){
+            setConfirmPasswordError('Input required');
+            return;
+        }
 
         registerUser(email, password)
             .then((userCredential) => {

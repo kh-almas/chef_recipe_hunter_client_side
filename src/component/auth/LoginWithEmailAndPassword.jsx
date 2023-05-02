@@ -10,16 +10,22 @@ const LoginWithEmailAndPassword = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     function handleEmailChange(event) {
+        setError('');
         setEmail(event.target.value);
     }
 
     function handlePassword(event) {
+        setError('');
         setPassword(event.target.value);
     }
 
     function handleSubmit(event) {
         event.preventDefault();
         setError('')
+        if (name === '' || password === ''){
+            setError('Input required');
+            return;
+        }
         userLogin(email, password)
             .then(userCredential => {
                 // const user = userCredential.user;
