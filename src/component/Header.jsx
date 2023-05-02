@@ -2,18 +2,23 @@ import React, {useContext, useState} from 'react';
 import { FiSun, FiMoon, FiUser } from 'react-icons/fi';
 import {Link} from "react-router-dom";
 import {ThemeContext} from "../provider/ThemeProvider.jsx";
+import {AuthContext} from "../provider/AuthProvider.jsx";
+import {Tooltip} from "flowbite-react";
 
 function Header() {
     const { darkMode, toggleDarkMode } = useContext(ThemeContext);
-    const [loggedIn, setLoggedIn] = useState(false);
+    const { user, logOut } = useContext(AuthContext);
 
-    function handleLogin() {
-        setLoggedIn(true);
+    const userLogout = () => {
+        logOut()
+            .then(() => {})
+            .catch((error) => {
+                const code = error.code;
+                console.log(code);
+            })
     }
 
-    function handleLogout() {
-        setLoggedIn(false);
-    }
+
 
     return (
         <header className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-800'}`}>
@@ -31,14 +36,17 @@ function Header() {
                         </button>
                     </div>
                     <div className="flex items-center space-x-2 ml-auto">
-                        {loggedIn ? (
+                        {user ? (
                             <div className="flex items-center space-x-2">
-                                <img src="/profile-image.jpg" alt="Profile" className="w-8 h-8 rounded-full" />
-                                <button className="px-4 py-2 rounded-md bg-yellow-500 text-white font-medium" onClick={handleLogout}>Logout</button>
+                                <Tooltip content={user?.displayName}>
+                                    <img src={user?.photoURL} alt="Profile" className="w-8 h-8 rounded-full" data-tooltip-target="tooltip-default"/>
+                                </Tooltip>
+
+                                <button onClick={() => userLogout()} className="px-4 py-2 rounded-md bg-yellow-500 text-white font-medium">Logout</button>
                             </div>
                         ) : (
                             <div className="flex items-center space-x-2">
-                                <Link to={'/login'} className="px-4 py-2 rounded-md bg-yellow-500 text-white font-medium" onClick={handleLogin}>Login</Link>
+                                <Link to={'/login'} className="px-4 py-2 rounded-md bg-yellow-500 text-white font-medium">Login</Link>
                                 <Link to={'/registration'} className="px-4 py-2 rounded-md bg-yellow-500 text-white font-medium">Register</Link>
                             </div>
                         )}
