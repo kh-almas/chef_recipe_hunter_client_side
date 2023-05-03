@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import ChefRecipeCardSingleData from "./ChefRecipeCardSingleData.jsx";
 import {useParams} from "react-router-dom";
+import {AuthContext} from "../provider/AuthProvider.jsx";
 
 const ChefRecipeCard = () => {
     const [recipe, setRecipe] = useState();
     const {id} = useParams();
+    const { setLoading } = useContext(AuthContext);
 
     useEffect(() => {
+        setLoading(true);
         fetch(`http://localhost:5000/chef/item/${id}`)
             .then(res => res.json())
             .then(data => setRecipe(data.recipes))
             .catch(error => {
                 console.log(error.code);
             })
+        setLoading(false);
     },[])
     // console.log(recipe);
     return (

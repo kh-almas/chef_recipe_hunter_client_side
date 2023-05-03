@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {ThemeContext} from "../provider/ThemeProvider.jsx";
 import {AuthContext} from "../provider/AuthProvider.jsx";
 import {Tooltip} from "flowbite-react";
+import ActiveLink from "../activeLink/ActiveLink.jsx";
 
 function Header() {
     const { darkMode, toggleDarkMode } = useContext(ThemeContext);
@@ -25,9 +26,9 @@ function Header() {
             <div className="container mx-auto flex items-center justify-between py-4 px-6">
                 <h1 className="text-2xl font-bold">The Plate Escape</h1>
                 <div className="flex">
-                    <Link to={'/'} className="px-4 py-2 me-3 rounded-md bg-yellow-500 text-white font-medium hidden md:block">Home</Link>
-                    <Link to={'/blog'} className="px-4 py-2 me-3 rounded-md bg-yellow-500 text-white font-medium hidden md:block">Blog</Link>
-                    <Link to={'/'} className="px-4 py-2 me-3 rounded-md bg-yellow-500 text-white font-medium hidden md:block">Contact</Link>
+                    <ActiveLink to={'/'} text={'Home'}></ActiveLink>
+                    <ActiveLink to={'/blog'} text={'Blog'}></ActiveLink>
+                    <ActiveLink to={'/contact'} text={'Contact'}></ActiveLink>
                 </div>
                 <div className="flex items-center space-x-4">
                     <div className="md:hidden">
@@ -62,9 +63,9 @@ function Header() {
                 </div>
             </div>
             <div className="container mx-auto py-4 px-6 md:hidden">
-                <Link to={'/'} className="px-4 py-2 rounded-md bg-yellow-500 text-white font-medium w-full">Home</Link>
-                <Link to={'/blog'} className="px-4 py-2 rounded-md bg-yellow-500 text-white font-medium w-full mt-2">Blog</Link>
-                <Link to={'/'} className="px-4 py-2 rounded-md bg-yellow-500 text-white font-medium w-full mt-2">Contact</Link>
+                <ActiveLink to={'/'} text={'Home'}></ActiveLink>
+                <ActiveLink to={'/blog'} text={'Blog'}></ActiveLink>
+                <ActiveLink to={'/contact'} text={'Contact'}></ActiveLink>
             </div>
         </header>
     );
