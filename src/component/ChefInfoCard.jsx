@@ -14,8 +14,6 @@ const ChefInfoCard = () => {
             })
     },[])
 
-    console.log(chefs);
-
     return (
         <>
             <div className="bg-gray-100 dark:bg-gray-900 py-8">

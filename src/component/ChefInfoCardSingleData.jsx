@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button, Card} from "flowbite-react";
+import {Link} from "react-router-dom";
 
 const ChefInfoCardSingleData = ({ chef }) => {
     const {id, image_url, name, years_of_experience, num_recipes, likes, bio} = chef;
@@ -36,9 +37,12 @@ const ChefInfoCardSingleData = ({ chef }) => {
                     </li>
                 </ul>
                 <div>
-                    <Button color="light" className="w-full">
-                        View Recipes
-                    </Button>
+
+                    <Link to={`/chef/recipe/${id}`}>
+                        <Button color="light" className="w-full">
+                            View Recipes
+                        </Button>
+                    </Link>
                 </div>
             </Card>
         </div>
