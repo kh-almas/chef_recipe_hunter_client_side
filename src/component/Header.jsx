@@ -26,7 +26,7 @@ function Header() {
                 <h1 className="text-2xl font-bold">The Plate Escape</h1>
                 <div className="flex">
                     <Link to={'/'} className="px-4 py-2 me-3 rounded-md bg-yellow-500 text-white font-medium hidden md:block">Home</Link>
-                    <Link to={'/'} className="px-4 py-2 me-3 rounded-md bg-yellow-500 text-white font-medium hidden md:block">Blog</Link>
+                    <Link to={'/blog'} className="px-4 py-2 me-3 rounded-md bg-yellow-500 text-white font-medium hidden md:block">Blog</Link>
                     <Link to={'/'} className="px-4 py-2 me-3 rounded-md bg-yellow-500 text-white font-medium hidden md:block">Contact</Link>
                 </div>
                 <div className="flex items-center space-x-4">
@@ -63,7 +63,7 @@ function Header() {
             </div>
             <div className="container mx-auto py-4 px-6 md:hidden">
                 <Link to={'/'} className="px-4 py-2 rounded-md bg-yellow-500 text-white font-medium w-full">Home</Link>
-                <Link to={'/'} className="px-4 py-2 rounded-md bg-yellow-500 text-white font-medium w-full mt-2">Blog</Link>
+                <Link to={'/blog'} className="px-4 py-2 rounded-md bg-yellow-500 text-white font-medium w-full mt-2">Blog</Link>
                 <Link to={'/'} className="px-4 py-2 rounded-md bg-yellow-500 text-white font-medium w-full mt-2">Contact</Link>
             </div>
         </header>

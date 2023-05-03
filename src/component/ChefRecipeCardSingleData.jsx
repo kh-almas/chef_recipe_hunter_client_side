@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button, Card} from "flowbite-react";
-import {Link} from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ChefRecipeCardSingleData = ({ data }) => {
+    const [isDisabled, setIsDisabled] = useState(false);
+    const setFavourite = () => {
+        toast("Item set in favourite");
+        setIsDisabled(true);
+    }
     return (
         <div>
+            <ToastContainer />
             <div className="max-w-sm">
                 <Card>
                     <h5 className="mb-3 text-base font-semibold text-gray-900 dark:text-white lg:text-xl">
@@ -43,7 +50,7 @@ const ChefRecipeCardSingleData = ({ data }) => {
                         }
 
                     </ul>
-                    <Button color="light" className="w-full">
+                    <Button onClick={setFavourite} color="light" className="w-full" disabled={isDisabled}>
                         Set as favourite
                     </Button>
                 </Card>

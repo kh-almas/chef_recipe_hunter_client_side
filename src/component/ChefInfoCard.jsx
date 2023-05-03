@@ -1,17 +1,21 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Button, Card} from "flowbite-react";
 import ChefInfoCardSingleData from "./ChefInfoCardSingleData.jsx";
+import {AuthContext} from "../provider/AuthProvider.jsx";
 
 const ChefInfoCard = () => {
     const [chefs, setChefs] = useState();
+    const { setLoading } = useContext(AuthContext);
 
     useEffect(() => {
+        setLoading(true);
         fetch('http://localhost:5000/chef')
             .then(res => res.json())
             .then(data => setChefs(data.chefs))
             .catch(error => {
                 console.log(error.code);
             })
+        setLoading(false);
     },[])
 
     return (
