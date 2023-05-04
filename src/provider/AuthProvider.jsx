@@ -10,6 +10,7 @@ import {
     GithubAuthProvider
 } from "firebase/auth";
 import auth from "../firebase/firebase.config.js";
+import {Navigate} from "react-router-dom";
 
 
 export const AuthContext = createContext(null);

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Card} from "flowbite-react";
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
+import LazyLoad from "react-lazyload";
 
 const ChefDetailsInChefRecipe = () => {
     const [chefs, setChefs] = useState();
@@ -23,11 +23,9 @@ const ChefDetailsInChefRecipe = () => {
         >
             <div className="bg-white bg-opacity-80 p-8 rounded-md shadow-md w-1/2">
                 <div className="flex items-center mb-4">
-                    <img
-                        src={ chefs?.image_url }
-                        alt="Chef"
-                        className="rounded-full h-24 w-24 object-cover mr-4"
-                    />
+                    <LazyLoad height={200} once>
+                        <img src={ chefs?.image_url } alt="Chef" className="rounded-full h-24 w-24 object-cover mr-4" />
+                    </LazyLoad>
                     <div>
                         <h1 className="text-3xl font-bold">{ chefs?.name }</h1>
                     </div>

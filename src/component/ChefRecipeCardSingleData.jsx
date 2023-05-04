@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Button, Card} from "flowbite-react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import LazyLoad from "react-lazyload";
 
 const ChefRecipeCardSingleData = ({ data }) => {
     const [isDisabled, setIsDisabled] = useState(false);
@@ -14,6 +15,7 @@ const ChefRecipeCardSingleData = ({ data }) => {
             <ToastContainer />
             <div className="max-w-sm">
                 <Card>
+                    <LazyLoad height={200} once><img src={data?.image} /></LazyLoad>
                     <h5 className="mb-3 text-base font-semibold text-gray-900 dark:text-white lg:text-xl">
                         {data?.recipe_name}
                     </h5>

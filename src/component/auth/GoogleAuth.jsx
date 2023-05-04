@@ -14,7 +14,11 @@ const GoogleAuth = () => {
             })
             .catch(error => {
                 console.log(error.message);
-            })
+            });
+
+
+
+
     }
 
     const textColor = darkMode ? 'text-white ' : 'text-gray-700';
