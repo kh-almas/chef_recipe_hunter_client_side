@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
 import {ThemeContext} from "../../provider/ThemeProvider.jsx";
 import {AuthContext} from "../../provider/AuthProvider.jsx";
-import { updateProfile } from "firebase/auth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RegisterWithEmailAndPassword = () => {
 
@@ -168,6 +169,8 @@ const RegisterWithEmailAndPassword = () => {
         setPhotoUrl('');
         setPassword('');
         setConfirmPassword('');
+
+        toast("Successfully created your account");
     }
 
 
@@ -177,6 +180,7 @@ const RegisterWithEmailAndPassword = () => {
 
     return (
         <form onSubmit={handleSubmit}>
+            <ToastContainer />
             <div className="mb-4">
                 <label className={`block font-semibold mb-2 ${textColor}`} htmlFor="name">
                     Name

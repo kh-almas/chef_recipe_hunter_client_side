@@ -1,6 +1,8 @@
 import React, {useContext, useState} from 'react';
 import {ThemeContext} from "../../provider/ThemeProvider.jsx";
 import {AuthContext} from "../../provider/AuthProvider.jsx";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginWithEmailAndPassword = () => {
     const { darkMode } = useContext(ThemeContext);
@@ -38,6 +40,7 @@ const LoginWithEmailAndPassword = () => {
             });
         setEmail('');
         setPassword('');
+        toast("Log in success");
     }
 
     const textColor = darkMode ? 'text-white ' : 'text-gray-700';
@@ -45,6 +48,7 @@ const LoginWithEmailAndPassword = () => {
 
     return (
         <form onSubmit={handleSubmit}>
+            <ToastContainer />
             <small className="text-white">{ error }</small>
             <div className="mb-4">
                 <label className={`block font-semibold mb-2 ${textColor}`} htmlFor="email">

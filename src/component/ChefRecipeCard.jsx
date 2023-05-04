@@ -12,7 +12,7 @@ const ChefRecipeCard = () => {
         setLoading(true);
         fetch(`http://localhost:5000/chef/item/${id}`)
             .then(res => res.json())
-            .then(data => setRecipe(data.recipes))
+            .then(data => setRecipe(data))
             .catch(error => {
                 console.log(error.code);
             })

@@ -28,7 +28,7 @@ function Header() {
                 <div className="flex">
                     <ActiveLink to={'/'} text={'Home'}></ActiveLink>
                     <ActiveLink to={'/blog'} text={'Blog'}></ActiveLink>
-                    <ActiveLink to={'/contact'} text={'Contact'}></ActiveLink>
+                    <ActiveLink to={'/favorite/recipes'} text={'Favorite Recipes'}></ActiveLink>
                 </div>
                 <div className="flex items-center space-x-4">
                     <div className="md:hidden">
@@ -67,7 +67,7 @@ function Header() {
             <div className="container mx-auto py-4 px-6 md:hidden">
                 <ActiveLink to={'/'} text={'Home'}></ActiveLink>
                 <ActiveLink to={'/blog'} text={'Blog'}></ActiveLink>
-                <ActiveLink to={'/contact'} text={'Contact'}></ActiveLink>
+                <ActiveLink to={'/favorite/recipes'} text={'Favorite Recipes'}></ActiveLink>
             </div>
         </header>
     );

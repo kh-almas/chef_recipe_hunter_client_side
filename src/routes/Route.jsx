@@ -9,6 +9,7 @@ import ChefRecipe from "../pages/ChefRecipe.jsx";
 import Blog from "../pages/Blog.jsx";
 import PrivateRoutes from "./PrivateRoutes.jsx";
 import UpdateProfile from "../component/auth/UpdateProfile.jsx";
+import FavoriteRecipes from "../pages/FavoriteRecipes.jsx";
 
 const routes = createBrowserRouter([
     {
@@ -34,7 +35,12 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/chef/recipe/:id',
-                element: <PrivateRoutes><ChefRecipe /></PrivateRoutes>,
+                element: <PrivateRoutes><ChefRecipe /></PrivateRoutes>
+            },
+            {
+                path: '/favorite/recipes',
+                element: <PrivateRoutes><FavoriteRecipes /></PrivateRoutes>,
+                loader: () => fetch('http://localhost:5000/recipes'),
             },
             {
                 path: '/blog',

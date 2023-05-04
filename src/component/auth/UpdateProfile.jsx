@@ -2,6 +2,8 @@ import React, {useContext, useState} from 'react';
 import {ThemeContext} from "../../provider/ThemeProvider.jsx";
 import {AuthContext} from "../../provider/AuthProvider.jsx";
 import {Navigate} from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UpdateProfile = () => {
 
@@ -63,14 +65,15 @@ const UpdateProfile = () => {
         }
     }
 
-
+    console.log(user);
 
     function handleSubmit(event) {
         event.preventDefault();
 
-        if(!user){
+        if(user === null){
             return <Navigate to={'/login'} replace={true} />
         }
+
 
         if (name === ''){
             setNameError('Input required');
@@ -88,6 +91,8 @@ const UpdateProfile = () => {
         setName('');
         setPhotoUrl('');
 
+        toast("Your profile updated");
+
 
 
     }
@@ -101,6 +106,7 @@ const UpdateProfile = () => {
 
     return (
         <div className={`flex justify-center items-center min-h-screen py-20 ${mainBgColor}`}>
+            <ToastContainer />
             <div className={`w-full max-w-md p-8 rounded-lg shadow-lg ${bgColor}`}>
                 <h1 className={`text-2xl font-semibold  mb-6 ${textColor}`}>Update your profile</h1>
                 <form onSubmit={handleSubmit}>

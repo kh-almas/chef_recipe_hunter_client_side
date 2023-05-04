@@ -6,9 +6,22 @@ import LazyLoad from "react-lazyload";
 
 const ChefRecipeCardSingleData = ({ data }) => {
     const [isDisabled, setIsDisabled] = useState(false);
-    const setFavourite = () => {
-        toast("Item set in favourite");
+    const setFavourite = (id) => {
         setIsDisabled(true);
+        let item = [];
+        const getStorageItem = JSON.parse(localStorage.getItem('favourite_recipes'));
+        if(getStorageItem)
+        {
+            item = [...getStorageItem];
+        }
+        if(item.includes(id))
+        {
+            toast("Already saved!");
+            return;
+        }
+        item.push(id);
+        localStorage.setItem('favourite_recipes', JSON.stringify(item));
+        toast("Item set in favourite");
     }
     return (
         <div>
@@ -44,15 +57,15 @@ const ChefRecipeCardSingleData = ({ data }) => {
                     <ul className="my-4 space-y-3">
                         <h4>Ingredients:</h4>
                         {
-                            data?.ingredients?.map(item => <><li>
+                            data?.ingredients?.map(item => <div key={item}><li>
                                 <div className="group flex items-center rounded-lg bg-gray-50 p-3 text-base font-bold text-gray-900 hover:bg-gray-100 hover:shadow dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500">
                                     <span className="ml-3 flex-1 whitespace-nowrap">{ item }</span>
                                 </div>
-                            </li></>)
+                            </li></div>)
                         }
 
                     </ul>
-                    <Button onClick={setFavourite} color="light" className="w-full" disabled={isDisabled}>
+                    <Button onClick={() => setFavourite(data.recipe_id)} color="light" className="w-full" disabled={isDisabled}>
                         Set as favourite
                     </Button>
                 </Card>
