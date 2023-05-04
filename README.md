@@ -30,7 +30,7 @@ Run the following command to start the development server:
 sql
 Copy code
 npm start
-The website should now be running on http://localhost:3000.
+The website should now be running on localhost.
 
 Deployment
 The Plate Escape is currently deployed on Vercel. To deploy your own version of the website, follow these steps:
