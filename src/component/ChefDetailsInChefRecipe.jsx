@@ -7,7 +7,7 @@ const ChefDetailsInChefRecipe = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/chef/${id}`)
+        fetch(`https://the-plate-escap-server.vercel.app/chef/${id}`)
             .then(res => res.json())
             .then(data => setChefs(data))
             .catch(error => {

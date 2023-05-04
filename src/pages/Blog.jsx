@@ -8,7 +8,7 @@ const Blog = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:5000/artical`)
+        fetch(`https://the-plate-escap-server.vercel.app/artical`)
             .then(res => res.json())
             .then(data => setBlog(data.qna))
             .catch(error => {

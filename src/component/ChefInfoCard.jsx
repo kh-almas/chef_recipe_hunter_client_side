@@ -12,7 +12,7 @@ const ChefInfoCard = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch('http://localhost:5000/chef')
+        fetch('https://the-plate-escap-server.vercel.app/chef')
             .then(res => res.json())
             .then(data => {
                 showMore ? setChefs(data.chefs) : setChefs(data.chefs.slice(0, 6));

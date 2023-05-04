@@ -10,7 +10,7 @@ const ChefRecipeCard = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:5000/chef/item/${id}`)
+        fetch(`https://the-plate-escap-server.vercel.app/chef/item/${id}`)
             .then(res => res.json())
             .then(data => setRecipe(data))
             .catch(error => {

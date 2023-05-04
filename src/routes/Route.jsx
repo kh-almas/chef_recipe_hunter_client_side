@@ -40,7 +40,7 @@ const routes = createBrowserRouter([
             {
                 path: '/favorite/recipes',
                 element: <PrivateRoutes><FavoriteRecipes /></PrivateRoutes>,
-                loader: () => fetch('http://localhost:5000/recipes'),
+                loader: () => fetch('https://the-plate-escap-server.vercel.app/recipes'),
             },
             {
                 path: '/blog',
