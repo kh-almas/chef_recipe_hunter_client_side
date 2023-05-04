@@ -18,6 +18,7 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState('');
     const [loading, setLoading] = useState(true);
+    const [isUpdated, setIsUpdate] = useState(false);
 
     const registerUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
@@ -48,6 +49,7 @@ const AuthProvider = ({ children }) => {
             photoURL: photoUrl
         }).then(() => {
             console.log('Profile updated!');
+            setIsUpdate(!isUpdated);
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -64,7 +66,7 @@ const AuthProvider = ({ children }) => {
         return () => {
             return unsubscribe();
         }
-    }, []);
+    }, [isUpdated]);
 
     const authInfo = {
         user,

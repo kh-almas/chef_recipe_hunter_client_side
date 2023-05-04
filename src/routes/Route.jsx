@@ -8,6 +8,7 @@ import LoginForm from "../component/LoginForm.jsx";
 import ChefRecipe from "../pages/ChefRecipe.jsx";
 import Blog from "../pages/Blog.jsx";
 import PrivateRoutes from "./PrivateRoutes.jsx";
+import UpdateProfile from "../component/auth/UpdateProfile.jsx";
 
 const routes = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ const routes = createBrowserRouter([
             {
                 path: '/login',
                 element: <LoginForm />
+            },
+            {
+                path: '/update/profile',
+                element: <UpdateProfile />
             },
             {
                 path: '/chef/recipe/:id',

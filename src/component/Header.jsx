@@ -40,7 +40,9 @@ function Header() {
                         {user ? (
                             <div className="flex items-center space-x-2">
                                 <Tooltip content={user?.displayName}>
-                                    <img src={user?.photoURL} alt="Profile" className="w-8 h-8 rounded-full" data-tooltip-target="tooltip-default"/>
+                                    <Link to={'/update/profile'}>
+                                        <img src={user?.photoURL} alt="Profile" className="w-8 h-8 rounded-full" data-tooltip-target="tooltip-default"/>
+                                    </Link>
                                 </Tooltip>
 
                                 <button onClick={() => userLogout()} className="px-4 py-2 rounded-md bg-yellow-500 text-white font-medium">Logout</button>

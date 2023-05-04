@@ -163,6 +163,11 @@ const RegisterWithEmailAndPassword = () => {
                 const errorMessage = error.message;
                 console.log(errorCode);
             });
+        setName('');
+        setEmail('');
+        setPhotoUrl('');
+        setPassword('');
+        setConfirmPassword('');
     }
 
 

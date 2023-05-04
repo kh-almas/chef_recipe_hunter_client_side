@@ -36,6 +36,8 @@ const LoginWithEmailAndPassword = () => {
                 setError(errorCode);
                 setPassword('');
             });
+        setEmail('');
+        setPassword('');
     }
 
     const textColor = darkMode ? 'text-white ' : 'text-gray-700';
